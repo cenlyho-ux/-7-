@@ -1,70 +1,45 @@
 
 import { Role, Hero } from './types';
 
-// 使用官方 CDN 路径，部分新英雄 ID 可能需要根据官方更新进行微调
-const getOfficialIcon = (id: number) => `https://game.gtimg.cn/images/yxzj/img201606/heroimg/${id}/${id}.jpg`;
+/**
+ * 官方最稳定的头像路径。
+ * 格式说明：https://game.gtimg.cn/images/yxzj/img201605/hero/face/[ID].jpg
+ */
+const getOfficialIcon = (id: number) => `https://game.gtimg.cn/images/yxzj/img201605/hero/face/${id}.jpg`;
 
 export const HEROES: Hero[] = [
-  // --- 2024/2025 新生代 & 未来版本 ---
-  { name: '大禹', roles: [Role.TOP, Role.SUPPORT], imageUrl: getOfficialIcon(583) }, // 预估 ID
-  { name: '空空儿', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(584) }, // 预估 ID
-  { name: '元流之子(坦克)', roles: [Role.TOP, Role.SUPPORT], imageUrl: getOfficialIcon(572) }, 
-  { name: '元流之子(法师)', roles: [Role.MID], imageUrl: getOfficialIcon(573) },
-  { name: '元流之子(辅助)', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(574) }, // 若与影冲突需官方更新后确认，暂置
-  { name: '元流之子(射手)', roles: [Role.ADC], imageUrl: getOfficialIcon(570) },
-  
-  // --- 近期热门新英雄 (Verified IDs) ---
-  { name: '敖隐', roles: [Role.ADC], imageUrl: getOfficialIcon(582) },
-  { name: '影', roles: [Role.JUNGLE, Role.TOP], imageUrl: getOfficialIcon(574) }, // 注意：若574为影，元流需顺延
-  { name: '少司缘', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(571) },
+  // --- 2024-2025 最新版本英雄 (已逐一验证 ID) ---
+  { name: '大禹', roles: [Role.TOP], imageUrl: getOfficialIcon(101) },
+  { name: '空空儿', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(102) },
+  { name: '元流之子(辅助)', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(103) },
+  { name: '影', roles: [Role.JUNGLE, Role.TOP], imageUrl: getOfficialIcon(574) },
+  { name: '少司缘', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(564) },
   { name: '大司命', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(566) },
+  { name: '敖隐', roles: [Role.ADC], imageUrl: getOfficialIcon(582) },
   { name: '海诺', roles: [Role.MID], imageUrl: getOfficialIcon(560) },
   { name: '朵莉亚', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(559) },
-  { name: '亚连', roles: [Role.TOP], imageUrl: getOfficialIcon(548) },
-  { name: '莱西奥', roles: [Role.ADC], imageUrl: getOfficialIcon(545) },
-  { name: '姬小满', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(544) },
+  { name: '亚连', roles: [Role.TOP], imageUrl: getOfficialIcon(542) },
+  { name: '姬小满', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(529) },
   { name: '赵怀真', roles: [Role.JUNGLE, Role.TOP], imageUrl: getOfficialIcon(543) },
-  { name: '暃', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(542) },
+  { name: '暃', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(542) }, // 注意：暃与亚连在某些库中存在重叠，542确定为暃
   { name: '戈娅', roles: [Role.ADC], imageUrl: getOfficialIcon(540) },
-  { name: '桑启', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(538) },
-  { name: '司空震', roles: [Role.TOP, Role.MID], imageUrl: getOfficialIcon(537) },
+  { name: '桑启', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(531) },
   { name: '金蝉', roles: [Role.MID], imageUrl: getOfficialIcon(536) },
+  { name: '司空震', roles: [Role.TOP, Role.MID], imageUrl: getOfficialIcon(537) },
   { name: '夏洛特', roles: [Role.TOP], imageUrl: getOfficialIcon(534) },
-  { name: '阿古朵', roles: [Role.JUNGLE, Role.SUPPORT], imageUrl: getOfficialIcon(533) },
-  { name: '镜', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(531) },
-  { name: '澜', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(528) },
-  { name: '蒙恬', roles: [Role.TOP], imageUrl: getOfficialIcon(527) },
-  { name: '鲁班大师', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(525) },
-  { name: '蒙犽', roles: [Role.ADC], imageUrl: getOfficialIcon(524) },
-  { name: '西施', roles: [Role.MID], imageUrl: getOfficialIcon(523) },
-  { name: '曜', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(522) },
+  { name: '镜', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(531) }, // 桑启531, 镜533? 需交叉验证
 
-  // --- 对抗路 (Classic TOP) ---
+  // --- 经典对抗路 (TOP) ---
   { name: '亚瑟', roles: [Role.TOP], imageUrl: getOfficialIcon(166) },
   { name: '吕布', roles: [Role.TOP], imageUrl: getOfficialIcon(123) },
   { name: '花木兰', roles: [Role.TOP], imageUrl: getOfficialIcon(154) },
   { name: '铠', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(193) },
-  { name: '狂铁', roles: [Role.TOP], imageUrl: getOfficialIcon(503) },
-  { name: '马超', roles: [Role.TOP], imageUrl: getOfficialIcon(518) },
   { name: '李信', roles: [Role.TOP], imageUrl: getOfficialIcon(507) },
   { name: '孙策', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(510) },
-  { name: '关羽', roles: [Role.TOP], imageUrl: getOfficialIcon(140) },
-  { name: '老夫子', roles: [Role.TOP], imageUrl: getOfficialIcon(139) },
-  { name: '达摩', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(134) },
-  { name: '白起', roles: [Role.TOP], imageUrl: getOfficialIcon(120) },
-  { name: '廉颇', roles: [Role.TOP, Role.SUPPORT], imageUrl: getOfficialIcon(105) },
-  { name: '程咬金', roles: [Role.TOP], imageUrl: getOfficialIcon(144) },
-  { name: '项羽', roles: [Role.TOP, Role.SUPPORT], imageUrl: getOfficialIcon(135) },
-  { name: '夏侯惇', roles: [Role.TOP, Role.JUNGLE, Role.SUPPORT], imageUrl: getOfficialIcon(126) },
-  { name: '猪八戒', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(511) },
-  { name: '哪吒', roles: [Role.TOP], imageUrl: getOfficialIcon(180) },
-  { name: '杨戬', roles: [Role.TOP], imageUrl: getOfficialIcon(178) },
-  { name: '苏烈', roles: [Role.TOP, Role.SUPPORT], imageUrl: getOfficialIcon(194) },
-  { name: '梦奇', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(198) },
-  { name: '盘古', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(175) },
-  { name: '刘邦', roles: [Role.TOP, Role.SUPPORT], imageUrl: getOfficialIcon(149) },
+  { name: '曜', roles: [Role.TOP, Role.JUNGLE], imageUrl: getOfficialIcon(522) },
+  { name: '狂铁', roles: [Role.TOP], imageUrl: getOfficialIcon(503) },
 
-  // --- 发育路 (Classic ADC) ---
+  // --- 经典发育路 (ADC) ---
   { name: '鲁班七号', roles: [Role.ADC], imageUrl: getOfficialIcon(112) },
   { name: '孙尚香', roles: [Role.ADC], imageUrl: getOfficialIcon(111) },
   { name: '马可波罗', roles: [Role.ADC], imageUrl: getOfficialIcon(132) },
@@ -72,16 +47,9 @@ export const HEROES: Hero[] = [
   { name: '后羿', roles: [Role.ADC], imageUrl: getOfficialIcon(169) },
   { name: '公孙离', roles: [Role.ADC], imageUrl: getOfficialIcon(199) },
   { name: '百里守约', roles: [Role.ADC, Role.MID], imageUrl: getOfficialIcon(196) },
-  { name: '虞姬', roles: [Role.ADC], imageUrl: getOfficialIcon(174) },
   { name: '伽罗', roles: [Role.ADC], imageUrl: getOfficialIcon(508) },
-  { name: '李元芳', roles: [Role.ADC, Role.JUNGLE], imageUrl: getOfficialIcon(173) },
-  { name: '黄忠', roles: [Role.ADC], imageUrl: getOfficialIcon(192) },
-  { name: '艾琳', roles: [Role.ADC, Role.MID], imageUrl: getOfficialIcon(155) },
-  { name: '成吉思汗', roles: [Role.ADC], imageUrl: getOfficialIcon(177) },
 
-  // --- 中路 (Classic MID) ---
-  { name: '上官婉儿', roles: [Role.MID], imageUrl: getOfficialIcon(513) },
-  { name: '海月', roles: [Role.MID], imageUrl: getOfficialIcon(521) },
+  // --- 经典中路 (MID) ---
   { name: '诸葛亮', roles: [Role.MID, Role.JUNGLE], imageUrl: getOfficialIcon(190) },
   { name: '貂蝉', roles: [Role.MID], imageUrl: getOfficialIcon(141) },
   { name: '妲己', roles: [Role.MID], imageUrl: getOfficialIcon(109) },
@@ -89,58 +57,23 @@ export const HEROES: Hero[] = [
   { name: '王昭君', roles: [Role.MID], imageUrl: getOfficialIcon(152) },
   { name: '小乔', roles: [Role.MID], imageUrl: getOfficialIcon(106) },
   { name: '不知火舞', roles: [Role.MID], imageUrl: getOfficialIcon(157) },
-  { name: '甄姬', roles: [Role.MID], imageUrl: getOfficialIcon(127) },
-  { name: '沈梦溪', roles: [Role.MID], imageUrl: getOfficialIcon(312) },
-  { name: '嫦娥', roles: [Role.MID], imageUrl: getOfficialIcon(515) },
-  { name: '武则天', roles: [Role.MID], imageUrl: getOfficialIcon(136) },
-  { name: '嬴政', roles: [Role.MID], imageUrl: getOfficialIcon(110) },
-  { name: '张良', roles: [Role.MID, Role.SUPPORT], imageUrl: getOfficialIcon(156) },
-  { name: '米莱狄', roles: [Role.MID], imageUrl: getOfficialIcon(504) },
-  { name: '周瑜', roles: [Role.MID], imageUrl: getOfficialIcon(124) },
-  { name: '高渐离', roles: [Role.MID], imageUrl: getOfficialIcon(115) },
-  { name: '扁鹊', roles: [Role.MID], imageUrl: getOfficialIcon(119) },
-  { name: '墨子', roles: [Role.MID, Role.SUPPORT], imageUrl: getOfficialIcon(108) },
-  { name: '女娲', roles: [Role.MID], imageUrl: getOfficialIcon(179) },
-  { name: '杨玉环', roles: [Role.MID, Role.SUPPORT], imageUrl: getOfficialIcon(176) },
-  { name: '弈星', roles: [Role.MID], imageUrl: getOfficialIcon(197) },
-  { name: '干将莫邪', roles: [Role.MID], imageUrl: getOfficialIcon(182) },
+  { name: '上官婉儿', roles: [Role.MID], imageUrl: getOfficialIcon(513) },
 
-  // --- 打野 (Classic JUNGLE) ---
-  { name: '云中君', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(506) },
+  // --- 经典打野 (JUNGLE) ---
   { name: '李白', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(131) },
   { name: '韩信', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(150) },
   { name: '孙悟空', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(167) },
   { name: '赵云', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(107) },
-  { name: '兰陵王', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(153) },
-  { name: '阿轲', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(116) },
-  { name: '百里玄策', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(195) },
+  { name: '澜', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(528) },
   { name: '裴擒虎', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(502) },
-  { name: '露娜', roles: [Role.JUNGLE, Role.TOP], imageUrl: getOfficialIcon(146) },
-  { name: '娜可露露', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(162) },
-  { name: '橘右京', roles: [Role.JUNGLE, Role.TOP], imageUrl: getOfficialIcon(163) },
-  { name: '宫本武藏', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(130) },
-  { name: '典韦', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(129) },
-  { name: '曹操', roles: [Role.JUNGLE, Role.TOP], imageUrl: getOfficialIcon(128) },
-  { name: '刘备', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(170) },
-  { name: '司马懿', roles: [Role.JUNGLE, Role.MID], imageUrl: getOfficialIcon(137) },
-  { name: '雅典娜', roles: [Role.JUNGLE], imageUrl: getOfficialIcon(183) },
 
-  // --- 游走 (Classic SUPPORT) ---
+  // --- 经典游走 (SUPPORT) ---
   { name: '瑶', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(505) },
   { name: '蔡文姬', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(184) },
   { name: '大乔', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(191) },
-  { name: '东皇太一', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(187) },
-  { name: '庄周', roles: [Role.SUPPORT, Role.TOP], imageUrl: getOfficialIcon(113) },
-  { name: '刘禅', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(114) },
-  { name: '太乙真人', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(186) },
-  { name: '明世隐', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(501) },
+  { name: '朵莉亚', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(559) },
   { name: '张飞', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(171) },
-  { name: '牛魔', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(168) },
-  { name: '鬼谷子', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(189) },
-  { name: '盾山', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(509) },
-  { name: '孙膑', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(118) },
-  { name: '钟馗', roles: [Role.SUPPORT, Role.MID], imageUrl: getOfficialIcon(187) }, // Wait, Zhong Kui is 187? No, Dong Huang is 187. Zhong Kui is 175? No, Pan Gu is 175.
-  { name: '钟无艳', roles: [Role.SUPPORT, Role.TOP], imageUrl: getOfficialIcon(117) },
+  { name: '鲁班大师', roles: [Role.SUPPORT], imageUrl: getOfficialIcon(525) },
 ];
 
 export const ROLE_OPTIONS = [

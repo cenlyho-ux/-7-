@@ -3,6 +3,7 @@ import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react'
 import { Role, Hero } from './types';
 import { HEROES, ROLE_OPTIONS } from './constants';
 
+// 亚瑟头像作为全能备选项
 const ARTHUR_ICON = "https://game.gtimg.cn/images/yxzj/img201605/hero/face/166.jpg";
 
 interface HistoryEntry {
@@ -71,9 +72,15 @@ const SlotReel: React.FC<{
             style={{ height: `${ITEM_HEIGHT}px` }}
           >
             <div className={`w-24 h-24 rounded-3xl overflow-hidden border-2 bg-slate-800 transition-all duration-1000 ${isDone ? 'border-amber-400 shadow-[0_0_35px_rgba(251,191,36,0.6)] scale-110' : 'border-white/[0.15] opacity-100 brightness-100'}`}>
-              <img src={hero.imageUrl} className="w-full h-full object-cover" key={hero.imageUrl} onError={(e) => {
-                (e.target as HTMLImageElement).src = "https://game.gtimg.cn/images/yxzj/img201605/hero/face/166.jpg";
-              }} />
+              <img 
+                src={hero.imageUrl} 
+                className="w-full h-full object-cover" 
+                key={hero.imageUrl} 
+                loading="eager"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = ARTHUR_ICON;
+                }} 
+              />
             </div>
           </div>
         ))}
@@ -204,9 +211,11 @@ const App: React.FC = () => {
                   <div className="text-amber-500/50 font-black tracking-[1em] mb-12 text-[9px] uppercase">Fate Decided</div>
                   <div className="relative mb-12">
                     <div className="w-56 h-56 rounded-full p-2.5 bg-gradient-to-br from-amber-400/50 to-orange-900/50 shadow-[0_0_90px_rgba(251,191,36,0.2)] border border-amber-500/30 overflow-hidden bg-slate-800">
-                        <img src={lotteryResult.imageUrl} className="w-full h-full rounded-full object-cover scale-105" onError={(e) => {
-                          (e.target as HTMLImageElement).src = ARTHUR_ICON;
-                        }} />
+                        <img 
+                          src={lotteryResult.imageUrl} 
+                          className="w-full h-full rounded-full object-cover scale-105" 
+                          onError={(e) => { (e.target as HTMLImageElement).src = ARTHUR_ICON; }} 
+                        />
                     </div>
                   </div>
                   <h3 className="text-7xl font-black italic tracking-tighter text-white mb-10 drop-shadow-[0_0_40px_rgba(0,0,0,1)]">{lotteryResult.name}</h3>
@@ -225,7 +234,7 @@ const App: React.FC = () => {
               <div className="mt-auto mb-28 w-full px-4 animate-in slide-in-from-bottom-12 duration-1000">
                 <button 
                   onClick={() => setIsPrepModalOpen(true)} 
-                  className="w-full py-8 rounded-[4.5rem] bg-gradient-to-br from-amber-400 via-amber-600 to-orange-900 text-white text-2xl font-black tracking-[1.5em] shadow-[0_25px_80px_rgba(245,158,11,0.2)] active:scale-95 transition-all hover:scale-[1.01] uppercase"
+                  className="w-full py-8 rounded-[4.5rem] bg-gradient-to-br from-amber-400 via-amber-600 to-orange-900 text-white text-2xl font-black tracking-[1.5em] shadow-[0_25px_80px_rgba(245,158,11,0.25)] active:scale-95 transition-all hover:scale-[1.01] uppercase"
                 >
                   开启挑战
                 </button>
@@ -267,9 +276,12 @@ const App: React.FC = () => {
                       className="flex flex-col items-center transition-transform active:scale-95"
                     >
                       <div className={`relative w-full aspect-square rounded-[1.5rem] overflow-hidden border-2 bg-slate-800 transition-all ${isBlocked ? 'border-red-500 ring-4 ring-red-500/10' : 'border-white/10'}`}>
-                        <img src={hero.imageUrl} className={`w-full h-full object-cover ${isBlocked ? 'grayscale opacity-30' : 'opacity-100'}`} loading="lazy" onError={(e) => {
-                          (e.target as HTMLImageElement).src = ARTHUR_ICON;
-                        }} />
+                        <img 
+                          src={hero.imageUrl} 
+                          className={`w-full h-full object-cover ${isBlocked ? 'grayscale opacity-30' : 'opacity-100'}`} 
+                          loading="lazy" 
+                          onError={(e) => { (e.target as HTMLImageElement).src = ARTHUR_ICON; }} 
+                        />
                         {isBlocked && (
                           <div className="absolute inset-0 bg-red-600/30 flex items-center justify-center">
                             <svg className="w-10 h-10 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,9 +316,12 @@ const App: React.FC = () => {
               {history.length > 0 ? (
                 history.map((entry, idx) => (
                   <div key={idx} className="bg-white/10 border border-white/10 rounded-[3rem] p-5 flex items-center space-x-6 shadow-xl">
-                    <img src={entry.hero.imageUrl} className="w-18 h-18 rounded-[1.5rem] object-cover border border-white/20 shadow-md bg-slate-800" style={{width: '72px', height: '72px'}} onError={(e) => {
-                      (e.target as HTMLImageElement).src = ARTHUR_ICON;
-                    }} />
+                    <img 
+                      src={entry.hero.imageUrl} 
+                      className="w-18 h-18 rounded-[1.5rem] object-cover border border-white/20 shadow-md bg-slate-800" 
+                      style={{width: '72px', height: '72px'}} 
+                      onError={(e) => { (e.target as HTMLImageElement).src = ARTHUR_ICON; }} 
+                    />
                     <div className="flex-grow">
                       <div className="flex justify-between items-center">
                         <h4 className="font-black text-white text-lg italic tracking-tight">{entry.hero.name}</h4>
